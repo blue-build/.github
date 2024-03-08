@@ -1,0 +1,43 @@
+name: Sync labels to all org repositories
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "/labels.yml"
+
+jobs:
+  get-repos:
+    name: Get Repos
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.get-repos.outputs.repos }}
+    steps:
+      - name: Get Repositories Action
+        id: get-repos
+        uses: raven-actions/get-repos@v1
+
+  sync-labels:
+    name: Sync labels for ${{ matrix.repo.name }}
+    if: ${{ needs.get-repos.outputs.repos != '[]' }} # make sure repos exist
+    runs-on: ubuntu-latest
+    needs:
+      - get-repos
+    strategy:
+      matrix:
+        repo: ${{ fromJson(needs.get-repos.outputs.repos) }}
+      fail-fast: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts
+          
+      - run: |
+          npm i -g github-label-sync
+          github-label-sync -l ./labels.yml "$LABEL_REPOSITORY"
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABEL_REPOSITORY: ${{ matrix.repo.full_name }}
