@@ -40,7 +40,7 @@
     - 'Status: PR Welcome'
     - 'Status: Ready for PR'
 - name: 'priority: critical'
-  color: d73a4af
+  color: d73a4a
   aliases:
     - 'priority: now'
     - 'Priority: Critical'
