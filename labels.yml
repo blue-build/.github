@@ -41,11 +41,13 @@
     - 'Status: Ready for PR'
 - name: 'priority: critical'
   color: d73a4a
+  description: Should be done as soon as possible
   aliases:
     - 'priority: now'
     - 'Priority: Critical'
 - name: 'priority: medium'
   color: fbca04
+  description: Needs to be done soon
   aliases:
     - 'priority: soon'
     - 'Priority: Medium'
