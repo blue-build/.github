@@ -39,6 +39,10 @@
     - 'status: help wanted'
     - 'Status: PR Welcome'
     - 'Status: Ready for PR'
+- name: 'upstream'
+  color: e6e6e6
+  description: Issue should be filed upstream, or was caused by / is waiting an upstream change
+- name: 'priority: medium'
 - name: 'priority: critical'
   color: d73a4a
   description: Should be done as soon as possible
