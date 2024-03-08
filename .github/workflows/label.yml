@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - labels.yml
+      - label.yml
 
 jobs:
   get-repos:
@@ -28,7 +29,9 @@ jobs:
         repo: ${{ fromJson(needs.get-repos.outputs.repos) }}
       fail-fast: false
     permissions:
-      contents: write
+      issues: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
