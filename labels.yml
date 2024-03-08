@@ -62,6 +62,12 @@
     - 'Priority: Low'
 - name: semantic-release
   color: e6e6e6
+- name: 'state: in-progress'
+  color: 91ca55
+  description: Work has started
+  aliases:
+    - WIP
+    - 'state: WIP'
 - name: 'state: approved'
   color: 91ca55
   description: Approved to proceed.
