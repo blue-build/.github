@@ -29,7 +29,7 @@ jobs:
         repo: ${{ fromJson(needs.get-repos.outputs.repos) }}
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
           
        # https://github.com/Financial-Times/github-label-sync
